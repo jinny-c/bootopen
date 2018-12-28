@@ -1,0 +1,21 @@
+# jdbc_config   datasource
+mysql:
+  server:
+    saas:
+      url: "jdbc:mysql://10.7.112.142:3306/qcodeszdb?useUnicode=true&characterEncoding=utf8"
+      username: baorcb
+      password: baorcb
+      driverClassName: com.mysql.jdbc.Driver
+      initialSize: 1  #初始化大小
+      minIdle: 1  #空闲连接池的大小
+      maxActive: 50 #最大激活数量
+    saas2:
+      url: "jdbc:mysql://10.7.112.142:3306/qcodedb?useUnicode=true&characterEncoding=utf8"
+      username: baorcb
+      password: baorcb
+      driverClassName: com.mysql.jdbc.Driver
+      initialSize: 1  #初始化大小
+      minIdle: 1  #空闲连接池的大小
+      maxActive: 50 #最大激活数量
+
+

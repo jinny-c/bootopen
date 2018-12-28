@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.bootopen.db.base.mapper.BaseTestMapper">
+    <resultMap id="BaseResultMap11" type="com.example.bootopen.db.base.mapper.domain.BaseTestBean">
+        <constructor>
+            <idArg column="ACCESS_TOKEN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="VER" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="CREATE_TM" jdbcType="DATE" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.bootopen.db.base.mapper.domain.BaseTestBean">
+        <result column="ACCESS_TOKEN" property="stId" jdbcType="VARCHAR" />
+        <result column="VER" property="stVal" jdbcType="VARCHAR" />
+        <result column="CREATE_TM" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List">
+      ACCESS_TOKEN, VER, CREATE_TM
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t01_wx_access_token
+    </select>
+
+</mapper>
