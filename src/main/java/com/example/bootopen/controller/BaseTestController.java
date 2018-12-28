@@ -1,6 +1,7 @@
 package com.example.bootopen.controller;
 
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,18 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bootopen.service.impl.BaseTestServiceImpl;
 
+@Slf4j
 @RestController
 @EnableAutoConfiguration
-public class HelloController {
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(HelloController.class);
+public class BaseTestController {
 
     @Autowired
     BaseTestServiceImpl baseTestService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/test")
     private String index() {
-        log.info("hello start");
+        log.info("test start");
         baseTestService.queryBaseTestAll();
-        return "hello world";
+        return "hello test";
     }
 }
