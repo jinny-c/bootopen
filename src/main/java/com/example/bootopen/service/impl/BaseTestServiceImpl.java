@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * ≤È—Ø≈‰÷√
  *
  * @author jdchai
  */
