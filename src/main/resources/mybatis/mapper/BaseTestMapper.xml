@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.bootopen.db.base.mapper.BaseTestMapper">
-    <resultMap id="BaseResultMap11" type="com.example.bootopen.db.base.mapper.domain.BaseTestBean">
+    <resultMap id="BaseResultMap-1" type="com.example.bootopen.db.base.mapper.domain.BaseTestBean">
         <constructor>
             <idArg column="ACCESS_TOKEN" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="VER" jdbcType="VARCHAR" javaType="java.lang.String"/>
