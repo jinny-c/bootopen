@@ -22,7 +22,7 @@ public class BaseTestBean {
 
     @Getter
     @Setter
-    private Date creatTime;
+    private Date createTime;
 
     @Override
     public String toString() {
@@ -30,7 +30,7 @@ public class BaseTestBean {
         builder.append("stId:").append(stId)
                 .append(",intId:").append(intId)
                 .append(",stVal:").append(stVal)
-                .append(",creatTime:").append(creatTime)
+                .append(",createTime:").append(createTime)
                 .append(",lnId:").append(lnId);
         return builder.toString();
     }

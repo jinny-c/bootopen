@@ -22,7 +22,7 @@ public class BaseTestServiceImpl implements IBaseTestService {
     private BaseTestMapper baseTestMapper;
 
     @Override
-    public List<String> queryBaseTestAll() {
+    public List<BaseTestBean> queryBaseTestAll() {
         // TODO Auto-generated method stub
         List<BaseTestBean> configs = baseTestMapper.selectAll();
         if (null == configs || configs.isEmpty()) {
@@ -30,7 +30,7 @@ public class BaseTestServiceImpl implements IBaseTestService {
             return null;
         }
         log.info("queryBaseTestAll,configs.size()={}", configs.size());
-        return null;
+        return configs;
     }
 
 }
