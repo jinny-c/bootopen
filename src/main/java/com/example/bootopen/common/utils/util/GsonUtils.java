@@ -16,8 +16,7 @@ public class GsonUtils {
         gson = new GsonBuilder()
                 //在序列化或反序列化时 排除 所有 没有被 @Expose 注解的字段。
                 .excludeFieldsWithoutExposeAnnotation()
-                .enableComplexMapKeySerialization().serializeNulls()
-                .disableHtmlEscaping()
+                .enableComplexMapKeySerialization().serializeNulls().disableHtmlEscaping()
                 .setDateFormat("yyyyMMddHHmmss")
                 .setVersion(1.00)
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
