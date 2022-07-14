@@ -24,12 +24,13 @@ public class BaseTestServiceImpl implements IBaseTestService {
     @Override
     public List<BaseTestBean> queryBaseTestAll() {
         // TODO Auto-generated method stub
+        log.info("queryBaseTestAll start");
         List<BaseTestBean> configs = baseTestMapper.selectAll();
         if (null == configs || configs.isEmpty()) {
-            log.info("queryMdseRateConfig,configs is null");
+            log.error("queryMdseRateConfig,configs is null");
             return null;
         }
-        log.info("queryBaseTestAll,configs.size()={}", configs.size());
+        log.warn("queryBaseTestAll,configs.size()={}", configs.size());
         return configs;
     }
 
