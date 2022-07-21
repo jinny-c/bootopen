@@ -150,6 +150,27 @@
             <version>4.2.0</version>
         </dependency>
 
+       <!--
+        <dependency>
+            <artifactId>rxjava</artifactId>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <version>2.2.9</version>
+        </dependency>
+              <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.1.36.Final</version>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.11.4</version>
+            <!--<version>3.3.1</version>-->
+        </dependency>
+
+
         <!--
 
                 <dependency>
