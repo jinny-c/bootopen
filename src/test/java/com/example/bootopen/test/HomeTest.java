@@ -67,6 +67,11 @@ public class HomeTest {
         System.out.println(isMessyCode("dssdfsdf*7^%$#32@3jhdhfgoh"));
     }
 
+    /**
+     * 是否是特殊字符
+     * @param strName
+     * @return
+     */
     private static boolean isMessyCode(String strName) {
         Pattern p = Pattern.compile("\\s*|t*|r*|n*");
         Matcher m = p.matcher(strName);
