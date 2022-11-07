@@ -69,6 +69,7 @@ public class HomeTest {
 
     /**
      * 是否是特殊字符
+     * 汉字乱码
      * @param strName
      * @return
      */
