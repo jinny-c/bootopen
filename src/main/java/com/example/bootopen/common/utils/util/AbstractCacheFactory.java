@@ -21,6 +21,8 @@ import java.util.concurrent.TimeUnit;
  * guava - cache
  * @auth chaijd
  * @date 2021/11/30
+ *
+ * 新一代 本地缓存（Caffeine缓存） 待定
  */
 @Slf4j
 public abstract class AbstractCacheFactory<T> {
