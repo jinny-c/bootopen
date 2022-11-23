@@ -265,4 +265,31 @@ public class RedissonUtils {
         return rTopic;
     }
 
+    /**
+     * 可重入 分布式锁
+     * 加锁
+     * @param rLock
+     * @param leaseTime
+     * @return
+     */
+    public static boolean getRLockTryLock(RLock rLock, long leaseTime) {
+        try {
+            return rLock.tryLock(0L, leaseTime, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * 解锁
+     * @param rLock
+     */
+    public static void rLockUnLock(RLock rLock) {
+        if(rLock.isLocked()){
+            if(rLock.isHeldByCurrentThread()){
+                rLock.unlock();
+            }
+        }
+    }
 }

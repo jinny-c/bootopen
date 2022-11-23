@@ -42,16 +42,27 @@ public class TestRedisson {
     public static void main(String[] args) {
         System.out.println("===========================> start");
         RedissonClient redissonClient = redissonClient();
+        //分布式锁
         RLock rLock = RedissonUtils.getRLock(redissonClient, REDIS_KEY);
+        //获取锁
         if (rLock.tryLock()) {
             try {
                 System.out.println("===========================> 获取锁成功");
             } catch (Exception e) {
                 System.out.println("===========================> 获取锁异常");
             } finally {
-                if (rLock.isLocked()) {
-                    rLock.unlock();
-                }
+                //解锁
+                RedissonUtils.rLockUnLock(rLock);
+            }
+        } else {
+            System.out.println("===========================> 获取锁失败");
+        }
+        //获取锁2s后自动释放
+        if (RedissonUtils.getRLockTryLock(rLock,2000L)) {
+            try {
+                System.out.println("===========================> 获取锁成功");
+            } catch (Exception e) {
+                System.out.println("===========================> 获取锁异常");
             }
         } else {
             System.out.println("===========================> 获取锁失败");
