@@ -30,7 +30,6 @@ public class ThreadPoolUtils {
         });
 
         //executor.getMaximumPoolSize() + ArrayBlockingQueue的capacity
-        //int t = executor.getMaximumPoolSize() + executor.getQueue().remainingCapacity();
         int t = executor.getMaximumPoolSize() + 2;
         //+1个 则超出线程池处理能力
         t += 1;
