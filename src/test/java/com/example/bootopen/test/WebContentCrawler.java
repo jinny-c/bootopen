@@ -33,8 +33,8 @@ public class WebContentCrawler {
     private void crawlerTest() {
 
         //03001代表03年第一期彩票  21036代表21年第36期彩票
-//        Document doc = getDocument("https://datachart.500.com/ssq/history/newinc/history.php?start=21001&end=23013");
-        Document doc = getDocument("https://datachart.500.com/ssq/history/newinc/history.php");
+        Document doc = getDocument("https://datachart.500.com/ssq/history/newinc/history.php?start=23001&end=23015");
+//        Document doc = getDocument("https://datachart.500.com/ssq/history/newinc/history.php");
 
         //Element element = doc.body();
         //System.out.println(element.html());
@@ -143,7 +143,7 @@ public class WebContentCrawler {
 
     @SneakyThrows
     public static Document getDocument(String url) {
-        Connection mozilla = Jsoup.connect(URLDecoder.decode(url, String.valueOf(StandardCharsets.UTF_8))).userAgent("Mozilla");
+        Connection mozilla = Jsoup.connect(URLDecoder.decode(url, String.valueOf(StandardCharsets.UTF_8))).userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36");
         Document document = mozilla.get();
         //Document document = mozilla.timeout(5000).get();
         return document;
