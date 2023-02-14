@@ -17,6 +17,8 @@ import java.util.Map;
 @Setter
 @ToString
 public class GetBallRespVo implements Serializable {
+    private String url;
+
     private String historyCount;
     private List<String> recently;
 

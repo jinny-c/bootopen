@@ -10,7 +10,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -57,32 +56,69 @@ public class BallHistoryCrawlerManage {
         });
 
         GetBallRespVo respVo = new GetBallRespVo();
+        respVo.setUrl(reqVo.getUrl());
         respVo.setHistoryCount(String.valueOf(list.size()));
-        if (list.size() > 3) {
-            respVo.setRecently(list.subList(0, 3));
+        Integer defNum = convertIntDef(reqVo.getDefaultNumber(), 3);
+        if (list.size() > defNum) {
+            respVo.setRecently(list.subList(0, defNum));
         } else {
             respVo.setRecently(list);
         }
 
-        frequencyOfListQ(redList, respVo, false);
-        frequencyOfListQ(blueList, respVo, true);
-//        System.out.println(list1);
-//        System.out.println(list2);
+        frequencyOfListQ(blueList, redList, respVo, reqVo);
+
         return respVo;
     }
 
-    public static void frequencyOfListQ(List<String> falcons, GetBallRespVo respVo, boolean isBlue) {
-        Map<String, Long> map = new HashMap<>();
-        if (CollectionUtils.isEmpty(falcons)) {
-            return;
+    private Integer convertIntDef(String val, int def) {
+        try {
+            return Integer.parseInt(val);
+        } catch (Exception e) {
+            log.error("convertIntDef Exception:{}", e.getMessage());
         }
+        return def;
+    }
+
+    /**
+     * 统计
+     *
+     * @param falcons
+     * @return
+     */
+    private Map<String, Long> statisticsFrequency(List<String> falcons) {
         //统计
-        map = falcons.stream().collect(Collectors.groupingBy(k -> k, Collectors.counting()));
+        Map<String, Long> map = falcons.stream().collect(Collectors.groupingBy(k -> k, Collectors.counting()));
         log.info("size={}", map.size());
+        return map;
+    }
+
+    /**
+     * key排序 并截取
+     *
+     * @param map
+     * @param intercept
+     * @return
+     */
+    private Map<String, Long> sortByKey(Map<String, Long> map, int intercept) {
         //根据key排序
         Map<String, Long> sorceKey = new TreeMap<>(map);
         log.info("sorceKey={}", sorceKey);
+        if (intercept == 0 || intercept >= map.size()) {
+            return sorceKey;
+        }
+        Map<String, Long> limitMap = new TreeMap<>();
+        sorceKey.entrySet().stream().limit(intercept).forEachOrdered(e -> limitMap.put(e.getKey(), e.getValue()));
+        return limitMap;
+    }
 
+    /**
+     * value排序 并截取
+     *
+     * @param map
+     * @param intercept
+     * @return
+     */
+    private Map<String, Long> sortByValue(Map<String, Long> map, int intercept) {
 //        Map<String, Long> sorceMap1 = new LinkedHashMap<>();
 //        map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue()).forEachOrdered(e->sorceMap1.put(e.getKey(),e.getValue()));
 //        System.out.println(sorceMap1);
@@ -90,15 +126,30 @@ public class BallHistoryCrawlerManage {
 //        map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).forEach(e->sorceMap2.put(e.getKey(),e.getValue()));
         //forEachOrdered 通过happensbefore原则保证了它的内存可见性
         //根据value排序
-        map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).forEachOrdered(e -> sorceValue.put(e.getKey(), e.getValue()));
-        log.info("sorceValue={}", sorceValue);
-        if (isBlue) {
-            respVo.setBlueOrderByKey(sorceKey.toString());
-            respVo.setBlueOrderByValue(sorceValue.toString());
+        if (intercept == 0 || intercept >= map.size()) {
+            map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).forEachOrdered(e -> sorceValue.put(e.getKey(), e.getValue()));
+            log.info("sorceValue={}", sorceValue);
         } else {
-            respVo.setRedOrderByKey(sorceKey.toString());
-            respVo.setRedOrderByValue(sorceValue.toString());
+            map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(intercept).forEachOrdered(e -> sorceValue.put(e.getKey(), e.getValue()));
         }
+        return sorceValue;
+    }
+
+    @Deprecated
+    public void frequencyOfListQ(List<String> blueList, List<String> redList, GetBallRespVo respVo, GetBallReqVo reqVo) {
+
+        boolean show = !StringUtils.equals(reqVo.getListHide(), "1");
+        Map<String, Long> blueMap = statisticsFrequency(blueList);
+        Map<String, Long> redMap = statisticsFrequency(redList);
+        Integer blueIntercept = convertIntDef(reqVo.getBlueSize(), 0);
+        Integer redIntercept = convertIntDef(reqVo.getRedSize(), 0);
+
+        if (show) {
+            respVo.setBlueOrderByKey(sortByKey(blueMap, blueIntercept).toString());
+            respVo.setRedOrderByKey(sortByKey(redMap, redIntercept).toString());
+        }
+        respVo.setBlueOrderByValue(sortByValue(blueMap, blueIntercept).toString());
+        respVo.setRedOrderByValue(sortByValue(redMap, redIntercept).toString());
     }
 
     @SneakyThrows

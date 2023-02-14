@@ -19,4 +19,8 @@ public class GetBallReqVo implements Serializable {
     private String url;
     private String start;
     private String end;
+    private String defaultNumber;
+    private String listHide;
+    private String blueSize;
+    private String redSize;
 }
