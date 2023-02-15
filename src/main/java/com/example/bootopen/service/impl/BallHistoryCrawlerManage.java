@@ -50,7 +50,8 @@ public class BallHistoryCrawlerManage {
             List<String> reds = Arrays.asList(redArr.clone());
             String red = StringUtils.join(redArr, "-");
             String blue = tds.get(7).text();
-            list.add(StringUtils.join(date, "期，红：", red, "，蓝：", blue));
+            //list.add(StringUtils.join(date, "期，红：", red, "，蓝：", blue));
+            list.add(StringUtils.join(date, ":", red, ",", blue));
             blueList.add(blue);
             redList.addAll(reds);
         });
