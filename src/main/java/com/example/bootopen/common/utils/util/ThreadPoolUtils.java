@@ -13,7 +13,8 @@ import java.util.concurrent.*;
 public class ThreadPoolUtils {
 
     public static void main(String[] args) {
-        newPool();
+        //newPool();
+        testPool();
     }
 
     private static void newPool() {
@@ -55,5 +56,50 @@ public class ThreadPoolUtils {
         }, 1, 3, TimeUnit.SECONDS);
         // 表示延迟1秒后每3秒执行一次
 //		scheduledThreadPool.shutdown();
+    }
+
+    /**
+     *ThreadPoolExecutor 的 AbortPolicy 策略 抛出异常后 捕获下
+     * 线程池空出来后 还能继续添加任务
+     */
+    private static void testPool() {
+        ExecutorService executor = new ThreadPoolExecutor(2, 4, 0L, TimeUnit.MILLISECONDS,
+                new ArrayBlockingQueue<>(2), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
+        try {
+            for (int i = 0; i < 10; i++) {
+                executor.execute(() -> {
+                    System.out.println(Thread.currentThread().getName() + " is running");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        } catch (RejectedExecutionException e) {
+            System.err.println("ThreadPoolExecutor is full, cannot accept new task.");
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            for (int i = 0; i < 10; i++) {
+                executor.execute(() -> {
+                    System.out.println(Thread.currentThread().getName() + " is running again");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        } catch (RejectedExecutionException e) {
+            System.err.println("ThreadPoolExecutor is full, cannot accept new task.");
+        }
+
+        executor.shutdown();
     }
 }
