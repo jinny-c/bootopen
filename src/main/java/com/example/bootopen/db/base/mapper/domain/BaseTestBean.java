@@ -24,6 +24,10 @@ public class BaseTestBean {
     @Setter
     private Date createTime;
 
+    @Getter
+    @Setter
+    private Date updateTime;
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("BaseTestBean:");
@@ -31,6 +35,7 @@ public class BaseTestBean {
                 .append(",intId:").append(intId)
                 .append(",stVal:").append(stVal)
                 .append(",createTime:").append(createTime)
+                .append(",updateTime:").append(updateTime)
                 .append(",lnId:").append(lnId);
         return builder.toString();
     }
