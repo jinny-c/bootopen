@@ -24,6 +24,7 @@ public class OpenWebsite implements CommandLineRunner {
     @Override
     public void run(String... args) throws IOException, URISyntaxException {
         String url = "http://localhost:8089";
+        url = "http://127.0.0.1:8089/druid/index.html";
         if (Desktop.isDesktopSupported()) {  // 检查是否支持桌面操作
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.BROWSE)) {  // 检查是否支持浏览器打开

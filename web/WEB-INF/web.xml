@@ -3,4 +3,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <init-param>
+        <param-name>exclusions</param-name>
+        <param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+    </init-param>
+    <init-param>
+        <param-name>sessionStatMaxCount</param-name>
+        <param-value>1000</param-value>
+    </init-param>
+    <init-param>
+        <param-name>sessionStatEnable</param-name>
+        <param-value>false</param-value>
+    </init-param>
+    <init-param>
+        <param-name>principalSessionName</param-name>
+        <param-value>xxx.user</param-value>
+    </init-param>
+    <init-param>
+        <param-name>principalCookieName</param-name>
+        <param-value>xxx.user</param-value>
+    </init-param>
+    <init-param>
+        <param-name>profileEnable</param-name>
+        <param-value>true</param-value>
+    </init-param>
+
 </web-app>

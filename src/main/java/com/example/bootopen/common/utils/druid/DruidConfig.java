@@ -1,20 +1,13 @@
 package com.example.bootopen.common.utils.druid;
 
-import javax.sql.DataSource;
-
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+import javax.sql.DataSource;
 
 
 @Configuration  //标识该类被纳入spring容器中实例化并管理
@@ -25,6 +18,7 @@ public class DruidConfig {
     //加载时读取指定的配置信息,前缀为spring.datasource.druid
     @ConfigurationProperties(prefix="spring.datasource")
     @Bean
+    @Primary
     public DataSource druidDataSource() {
         return new DruidDataSource();
     }

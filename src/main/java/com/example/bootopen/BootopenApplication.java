@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+//@ImportResource(value = {"classpath:config/druid.xml"})
 public class BootopenApplication {
 
 //    @Bean
