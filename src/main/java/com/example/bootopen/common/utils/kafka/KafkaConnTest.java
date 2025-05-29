@@ -1,22 +1,21 @@
 package com.example.bootopen.common.utils.kafka;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.message.MessageAndMetadata;
-
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class KafkaConnTest implements Runnable {
 	public String title;
@@ -70,8 +69,8 @@ public class KafkaConnTest implements Runnable {
 		config.put("value.serializer",
 				"org.apache.kafka.common.serialization.StringSerializer");
 		// broker的地址
-		config.put("bootstrap.servers",
-				"10.7.111.170:2181,10.7.111.171:2181,10.7.111.172:2181/mqcluster0");
+		//config.put("bootstrap.servers", "10.7.111.170:2181,10.7.111.171:2181,10.7.111.172:2181/mqcluster0");
+		config.put("bootstrap.servers", "192.168.130.199:1305");
 		// acks=0 客户端不会等待服务端的确认
 		// acks=1 只会等待leader分区的确认
 		// acks=all或者acks=-1 等待leader分区和follower分区的确认
@@ -91,8 +90,8 @@ public class KafkaConnTest implements Runnable {
 	private static void kafkaConsume() {
 		Properties props = new Properties();
 		// zookeeper 配置
-		props.put("zookeeper.connect",
-				"10.7.111.170:2181,10.7.111.171:2181,10.7.111.172:2181/mqcluster0");
+		//props.put("zookeeper.connect", "10.7.111.170:2181,10.7.111.171:2181,10.7.111.172:2181/mqcluster0");
+		props.put("zookeeper.connect", "192.168.130.199:1305");
 		// group 代表一个消费组
 		props.put("group.id", "pay-trade-notifier-11t");
 		// zk连接超时
@@ -129,7 +128,7 @@ public class KafkaConnTest implements Runnable {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// kafkaSender();
-		// kafkaConsume();
+		 kafkaSender();
+		 kafkaConsume();
 	}
 }
