@@ -20,7 +20,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * InterProcessSemaphoreMutex：分布式排它锁
  * InterProcessReadWriteLock：分布式读写锁
  */
-public class TestZookeeper {
+public class ZookeeperLock {
     private static CuratorFramework getZkClient() {
         String zkServerAddress = "10.177.84.92:2181";
         ExponentialBackoffRetry retryPolicy = new ExponentialBackoffRetry(1000, 3, 5000);
