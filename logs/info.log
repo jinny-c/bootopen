@@ -1,0 +1,44 @@
+[2025-06-05 14:29:57.928][INFO] [main] [] [c.e.bootopen.BootopenApplication:48] : Starting BootopenApplication on jind with PID 29324 (D:\Workers\workspace\github\bootopen\target\classes started by jind in D:\Workers\workspace\github\bootopen)
+[2025-06-05 14:29:57.930][INFO] [main] [] [c.e.bootopen.BootopenApplication:597] : The following profiles are active: local
+[2025-06-05 14:29:58.035][INFO] [main] [] [o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext:583] : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@359ff62d: startup date [Thu Jun 05 14:29:58 CST 2025]; root of context hierarchy
+[2025-06-05 14:29:59.160][INFO] [main] [] [o.s.b.c.e.t.TomcatEmbeddedServletContainer:92] : Tomcat initialized with port(s): 8089 (http)
+[2025-06-05 14:29:59.181][INFO] [main] [] [o.a.c.core.StandardService:180] : Starting service [Tomcat]
+[2025-06-05 14:29:59.182][INFO] [main] [] [o.a.catalina.core.StandardEngine:180] : Starting Servlet Engine: Apache Tomcat/8.5.35
+[2025-06-05 14:29:59.247][INFO] [localhost-startStop-1] [] [o.a.c.c.C.[.[localhost].[/]:180] : Initializing Spring embedded WebApplicationContext
+[2025-06-05 14:29:59.248][INFO] [localhost-startStop-1] [] [o.s.web.context.ContextLoader:287] : Root WebApplicationContext: initialization completed in 1213 ms
+[2025-06-05 14:29:59.378][INFO] [localhost-startStop-1] [] [o.s.b.w.s.ServletRegistrationBean:191] : Mapping servlet: 'dispatcherServlet' to [/]
+[2025-06-05 14:29:59.379][INFO] [localhost-startStop-1] [] [o.s.b.w.s.ServletRegistrationBean:191] : Mapping servlet: 'statViewServlet' to [/druid/*]
+[2025-06-05 14:29:59.379][INFO] [localhost-startStop-1] [] [o.s.b.w.s.ServletRegistrationBean:191] : Mapping servlet: 'com.example.bootopen.common.utils.druid.DruidStatViewServlet' to [/druid/*]
+[2025-06-05 14:29:59.382][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:259] : Mapping filter: 'characterEncodingFilter' to: [/*]
+[2025-06-05 14:29:59.383][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:259] : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[2025-06-05 14:29:59.383][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:259] : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[2025-06-05 14:29:59.383][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:259] : Mapping filter: 'requestContextFilter' to: [/*]
+[2025-06-05 14:29:59.383][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:272] : Mapping filter: 'webStatFilter' to urls: [/*]
+[2025-06-05 14:29:59.383][INFO] [localhost-startStop-1] [] [o.s.b.w.s.FilterRegistrationBean:272] : Mapping filter: 'druidWebStatFilter' to urls: [/*]
+[2025-06-05 14:29:59.947][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerAdapter:556] : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@359ff62d: startup date [Thu Jun 05 14:29:58 CST 2025]; root of context hierarchy
+[2025-06-05 14:30:00.003][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/test]}" onto private java.lang.String com.example.bootopen.controller.BaseTestController.index()
+[2025-06-05 14:30:00.004][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/testReq],methods=[POST]}" onto public <T> com.example.bootopen.common.utils.web.api.WebBaseRespVo<T> com.example.bootopen.controller.BaseTestController.testReq(com.example.bootopen.common.utils.web.api.WebBaseReqVo<com.example.bootopen.controller.vo.TestReqVo>)
+[2025-06-05 14:30:00.004][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/commonReq],methods=[GET || POST]}" onto public <T> com.example.bootopen.common.utils.web.api.WebBaseRespVo<T> com.example.bootopen.controller.BaseTestController.commonReq(com.example.bootopen.common.utils.web.api.WebBaseReqVo<com.example.bootopen.controller.vo.base.WebCommonReq>)
+[2025-06-05 14:30:00.004][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/hello]}" onto private java.lang.String com.example.bootopen.controller.HelloController.index()
+[2025-06-05 14:30:00.005][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/ball/list],methods=[GET || POST]}" onto public com.example.bootopen.controller.vo.GetBallRespVo com.example.bootopen.controller.HelloController.ballList(javax.servlet.http.HttpServletRequest)
+[2025-06-05 14:30:00.008][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[2025-06-05 14:30:00.008][INFO] [main] [] [o.s.w.s.m.m.a.RequestMappingHandlerMapping:544] : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[2025-06-05 14:30:00.039][INFO] [main] [] [o.s.w.s.h.SimpleUrlHandlerMapping:362] : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2025-06-05 14:30:00.040][INFO] [main] [] [o.s.w.s.h.SimpleUrlHandlerMapping:362] : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2025-06-05 14:30:00.057][INFO] [main] [] [o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver:274] : Detected @ExceptionHandler methods in transExceptionHandler
+[2025-06-05 14:30:00.083][INFO] [main] [] [o.s.w.s.h.SimpleUrlHandlerMapping:362] : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2025-06-05 14:30:00.098][INFO] [main] [] [o.s.b.a.w.WebMvcAutoConfiguration$WelcomePageHandlerMapping:548] : Adding welcome page: class path resource [static/index.html]
+[2025-06-05 14:30:00.502][INFO] [main] [] [o.s.j.e.a.AnnotationMBeanExporter:431] : Registering beans for JMX exposure on startup
+[2025-06-05 14:30:00.503][INFO] [main] [] [o.s.j.e.a.AnnotationMBeanExporter:918] : Bean with name 'druidDataSource' has been autodetected for JMX exposure
+[2025-06-05 14:30:00.504][INFO] [main] [] [o.s.j.e.a.AnnotationMBeanExporter:918] : Bean with name 'statFilter' has been autodetected for JMX exposure
+[2025-06-05 14:30:00.509][INFO] [main] [] [o.s.j.e.a.AnnotationMBeanExporter:672] : Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+[2025-06-05 14:30:00.511][INFO] [main] [] [o.s.j.e.a.AnnotationMBeanExporter:672] : Located MBean 'druidDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=druidDataSource,type=DruidDataSource]
+[2025-06-05 14:30:00.548][INFO] [main] [] [o.s.b.c.e.t.TomcatEmbeddedServletContainer:216] : Tomcat started on port(s): 8089 (http)
+[2025-06-05 14:30:00.581][INFO] [main] [] [c.e.bootopen.common.OpenWebsite:49] : openUrlWithCommand cmd=[cmd, /c, start, http://127.0.0.1:8089/druid/index.html]
+[2025-06-05 14:30:00.645][INFO] [main] [] [c.e.bootopen.BootopenApplication:57] : Started BootopenApplication in 2.93 seconds (JVM running for 6.98)
+[2025-06-05 14:30:02.079][INFO] [http-nio-8089-exec-9] [] [o.a.c.c.C.[.[localhost].[/]:180] : Initializing Spring FrameworkServlet 'dispatcherServlet'
+[2025-06-05 14:30:02.079][INFO] [http-nio-8089-exec-9] [] [o.s.w.servlet.DispatcherServlet:489] : FrameworkServlet 'dispatcherServlet': initialization started
+[2025-06-05 14:30:02.091][INFO] [http-nio-8089-exec-9] [] [o.s.w.servlet.DispatcherServlet:508] : FrameworkServlet 'dispatcherServlet': initialization completed in 12 ms
+[2025-06-05 14:30:12.602][INFO] [Thread-4] [] [o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext:984] : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@359ff62d: startup date [Thu Jun 05 14:29:58 CST 2025]; root of context hierarchy
+[2025-06-05 14:30:12.603][INFO] [Thread-4] [] [o.s.j.e.a.AnnotationMBeanExporter:449] : Unregistering JMX-exposed beans on shutdown
+[2025-06-05 14:30:12.603][INFO] [Thread-4] [] [o.s.j.e.a.AnnotationMBeanExporter:243] : Unregistering JMX-exposed beans
